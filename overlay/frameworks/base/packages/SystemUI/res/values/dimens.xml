@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
- * Copyright (c) 2006, The Android Open Source Project
+ * Copyright (c) 2020, The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,16 @@
          navigation_extra_key_width -->
     <dimen name="navigation_side_padding">85dp</dimen>
 
+    <!-- for 10dp of padding at 2.75px/dp at default density -->
     <dimen name="rounded_corner_content_padding">10dp</dimen>
 
-    <dimen name="keyguard_carrier_text_margin">18dp</dimen>
+    <!-- Padding for the system icons on the keyguard (when no multi user switch is showing).
+    The icons always have a 4dp padding in the container so we only need 33 extra px of padding
+    for the corners -->
+    <dimen name="system_icons_super_container_avatarless_margin_end">33px</dimen>
+
+    <!-- Multi user switch has some intrinsic padding to it -->
+    <dimen name="multi_user_switch_keyguard_margin">22px</dimen>
+
+    <dimen name="keyguard_carrier_text_margin">44px</dimen>
 </resources>
