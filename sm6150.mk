@@ -220,6 +220,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.enable_gl_backpressure=1
 
+# Use 64-bit dex2oat for better dexopt time.
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dex2oat64.enabled=true
+
 # Display interfaces
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.composer@1.0.vendor \
