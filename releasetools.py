@@ -29,11 +29,13 @@ def IncrementalOTA_Assertions(info):
 
 def FullOTA_InstallEnd(info):
   input_zip = info.input_zip
+  OTA_UpdateFirmware(info)
   OTA_InstallEnd(info, input_zip)
   return
 
 def IncrementalOTA_InstallEnd(info):
   input_zip = info.target_zip
+  OTA_UpdateFirmware(info)
   OTA_InstallEnd(info, input_zip)
   return
 
@@ -47,6 +49,10 @@ def AddBasebandAssertion(info, input_zip):
   cmd = 'assert(getprop("ro.boot.hwc") == "{0}" && (xiaomi.verify_baseband("{2}", "{1}") == "1" || abort("ERROR: This package requires baseband from atleast {2}. Please upgrade firmware and retry!");) || true);'
   for variant in variants:
     info.script.AppendExtra(cmd.format(*variant))
+
+def OTA_UpdateFirmware(info):
+  info.script.AppendExtra('ui_print("Patching logo image unconditionally...");')
+  info.script.AppendExtra('package_extract_file("install/firmware-update/logo.img", "/dev/block/bootdevice/by-name/logo");')
 
 def AddImage(info, input_zip, basename, dest):
   name = basename
