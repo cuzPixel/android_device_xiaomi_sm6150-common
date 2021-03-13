@@ -51,7 +51,7 @@ def AddBasebandAssertion(info, input_zip):
     info.script.AppendExtra(cmd.format(*variant))
 
 def OTA_UpdateFirmware(info):
-  info.script.AppendExtra('ui_print("Flashing MIUI 21.1.8 Firmware ...");')
+  info.script.AppendExtra('ui_print("Flashing MIUI Normal Firmware ...");')
   info.script.AppendExtra('package_extract_file("install/firmware-update/logo.img", "/dev/block/bootdevice/by-name/logo");')
   info.script.AppendExtra('package_extract_file("install/firmware-update/cmnlib64.mbn", "/dev/block/bootdevice/by-name/cmnlib64");')
   info.script.AppendExtra('package_extract_file("install/firmware-update/imagefv.elf", "/dev/block/bootdevice/by-name/imagefv");')
