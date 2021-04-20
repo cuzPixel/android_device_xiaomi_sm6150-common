@@ -130,6 +130,10 @@ PRODUCT_PACKAGES += \
     CameraGo  \
     vendor.qti.hardware.camera.device@1.0.vendor
 
+# Charger
+PRODUCT_PACKAGES += \
+    libsuspend
+
 # CNE
 PRODUCT_PACKAGES += \
     cneapiclient \
