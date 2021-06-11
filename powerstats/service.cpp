@@ -25,7 +25,6 @@
 #include <pixelpowerstats/AidlStateResidencyDataProvider.h>
 #include <pixelpowerstats/GenericStateResidencyDataProvider.h>
 #include <pixelpowerstats/PowerStats.h>
-#include <pixelpowerstats/WlanStateResidencyDataProvider.h>
 #include <pixelpowerstats/DisplayStateResidencyDataProvider.h>
 
 using android::OK;
@@ -49,7 +48,6 @@ using android::hardware::google::pixel::powerstats::generateGenericStateResidenc
 using android::hardware::google::pixel::powerstats::GenericStateResidencyDataProvider;
 using android::hardware::google::pixel::powerstats::PowerEntityConfig;
 using android::hardware::google::pixel::powerstats::StateResidencyConfig;
-using android::hardware::google::pixel::powerstats::WlanStateResidencyDataProvider;
 using android::hardware::google::pixel::powerstats::DisplayStateResidencyDataProvider;
 
 int main(int /* argc */, char ** /* argv */) {
@@ -111,12 +109,6 @@ int main(int /* argc */, char ** /* argv */) {
         PowerEntityConfig(generateGenericStateResidencyConfigs(socStateConfig, socStateHeaders)));
 
     service->addStateResidencyDataProvider(socSdp);
-
-    // Add WLAN power entity
-    uint32_t wlanId = service->addPowerEntity("WLAN", PowerEntityType::SUBSYSTEM);
-    sp<WlanStateResidencyDataProvider> wlanSdp =
-            new WlanStateResidencyDataProvider(wlanId, "/sys/kernel/wlan/power_stats");
-    service->addStateResidencyDataProvider(wlanSdp);
 
     uint32_t displayId = service->addPowerEntity("Display", PowerEntityType::SUBSYSTEM);
     sp<DisplayStateResidencyDataProvider> displaySdp =
